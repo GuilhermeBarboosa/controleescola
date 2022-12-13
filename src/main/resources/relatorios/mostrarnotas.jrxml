@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mostrarnotas" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="0" uuid="499a34f4-76c7-4a05-a0b2-d979e4f33578">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="controleescola"/>
+	<parameter name="IDPROVA" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT nota.codigo_prova,
+	nota.codigo_aluno,
+	nota.valor,
+	aluno.nome
+FROM aluno,
+	nota
+WHERE 
+	 nota.codigo_aluno = aluno.codigo
+	 AND nota.codigo_prova = $P{IDPROVA}]]>
+	</queryString>
+	<field name="codigo_prova" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="codigo_prova"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo_prova"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nota"/>
+	</field>
+	<field name="codigo_aluno" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="codigo_aluno"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo_aluno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nota"/>
+	</field>
+	<field name="valor" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nota"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="a3a753a6-8499-4c42-9f41-790cce524c70"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="953f7e3c-470d-42a3-ac7e-810259da7975"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

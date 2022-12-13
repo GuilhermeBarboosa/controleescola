@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Gerenciador de Escola com Spring Boot</title>
+</head>
+<body>
+
+	<div sec:authorize="isAuthenticated()">
+		<form action="#" th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+
+	<h1>Escola Tabajara</h1>
+
+	<h2>Alunos</h2>
+
+	<form th:action="@{/aluno/cadastrar}">
+		<input type="submit" value="Cadastrar" />
+	</form>
+
+	<form th:action="@{/aluno/buscar}">
+		<input type="submit" value="Buscar" />
+	</form>
+
+	<form th:action="@{/aluno/remover}">
+		<input type="submit" value="Remover" />
+	</form>
+
+	<form th:action="@{/aluno/alterar}">
+		<input type="submit" value="Alterar" />
+	</form>
+
+	<form th:action="@{/aluno/notas}">
+		<input type="submit" value="Notas" />
+	</form>
+
+	<form th:action="@{/aluno/relatorio}">
+		<input type="submit" value="Relatório" />
+	</form>
+</body>
+</html>
